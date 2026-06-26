@@ -1,6 +1,6 @@
 import Fastify from 'fastify';
-import { swaggerPlugin } from './plugins/swagger.js';
-import { corsPlugin } from './plugins/cors.js';
+import swaggerPlugin from './plugins/swagger.js';
+import corsPlugin from './plugins/cors.js';
 import { healthRoutes } from './routes/health.js';
 import { analyzeRoutes } from './routes/analyze.js';
 import { loggerConfig } from './utils/logger.js';

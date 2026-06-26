@@ -1,13 +1,11 @@
+import fp from 'fastify-plugin';
 import type { FastifyInstance } from 'fastify';
 
 /**
  * Registers CORS headers for the application.
- * Install @fastify/cors to enable full CORS support:
- *   npm install @fastify/cors
- *
- * For now, this plugin adds basic permissive CORS headers via a hook.
+ * Wrapped with fastify-plugin to apply at the root scope.
  */
-export async function corsPlugin(fastify: FastifyInstance) {
+export default fp(async function corsPlugin(fastify: FastifyInstance) {
   fastify.addHook('onRequest', async (request, reply) => {
     reply.header('Access-Control-Allow-Origin', '*');
     reply.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -18,4 +16,4 @@ export async function corsPlugin(fastify: FastifyInstance) {
       reply.status(204).send();
     }
   });
-}
+});
